@@ -19,7 +19,7 @@ pipeline {
         
         stage('Transfer the artifact and deploy') {
             steps {
-                deployTomcat('tomcat','ec2-user',172.31.37.225)
+                deployTomcat('tomcat','ec2-user','172.31.37.225')
             }
         }
     }
