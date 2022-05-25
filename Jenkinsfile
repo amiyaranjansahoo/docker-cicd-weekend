@@ -29,7 +29,7 @@ pipeline {
 				file: 'target/myweb.war', type: 'war']], 
 				credentialsId: 'amiya', 
 				groupId: 'in.javahome', 
-				nexusUrl: 'http', 
+				nexusUrl: '172.31.33.15:8081', 
 				nexusVersion: 'nexus3', 
 				protocol: 'http', 
 				repository: 'sample-release', 
