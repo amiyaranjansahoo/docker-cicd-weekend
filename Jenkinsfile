@@ -22,5 +22,19 @@ pipeline {
                 deployTomcat('tomcat','ec2-user','172.31.37.225')
             }
         }
+		
+		stage('Upload to nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'myweb', classifier: '', 
+				file: 'target/myweb.war', type: 'war']], 
+				credentialsId: 'amiya', 
+				groupId: 'in.javahome', 
+				nexusUrl: 'http', 
+				nexusVersion: 'nexus3', 
+				protocol: 'http', 
+				repository: 'sample-release', 
+				version: '0.0.2-SNAPSHOT'
+            }
+        }
     }
 }
