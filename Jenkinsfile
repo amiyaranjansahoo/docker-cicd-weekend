@@ -13,7 +13,7 @@ pipeline {
 		
 		stage('Create the docker image') {
 			steps {
-				echo "code here Create the docker image"
+				sh "docker build -t amiyaranjansahoo/docker-img-weekend ."
 			}
 		}
 		
