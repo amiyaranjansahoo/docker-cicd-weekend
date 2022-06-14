@@ -19,7 +19,10 @@ pipeline {
 		
 		stage('Push the image to docker hub') {
 			steps {
-				echo "Code for Push the image to docker hub"
+				withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerPWD')]) {
+				docker login -u amiyaranjansahoo -p ${dockerPWD}
+				docker push amiyaranjansahoo/docker-img-weekend
+				}
 			}
 		}
 		
