@@ -5,7 +5,7 @@ pipeline {
 	}
 	
 	stages {
-		stage('Build the project') {
+		stage('Build the project using maven') {
 			steps {
 				sh 'mvn clean package'
 			}
@@ -13,7 +13,7 @@ pipeline {
 		
 		stage('Create the docker image') {
 			steps {
-				sh "docker build -t amiyaranjansahoo/docker-img-weekend ."
+				sh "docker build . -t amiyaranjansahoo/docker-img-weekend"
 			}
 		}
 		
