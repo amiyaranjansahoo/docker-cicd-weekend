@@ -26,9 +26,11 @@ pipeline {
 			}
 		}
 		
-		stage('Deploy the image to dev server') {
+		stage('Transfer and Deploy the image to dev server') {
 			steps {
-				echo "Code for Deploy the image to dev server"
+				sshagent(['docker-dev']) {
+    sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.33.242 docker container run -itd -p 9090:8080 amiyaranjansahoo/docker-img-weekend" 
+}
 			}
 		}
 	}
